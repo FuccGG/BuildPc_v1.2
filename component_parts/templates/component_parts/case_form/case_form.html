@@ -1,0 +1,12 @@
+<!doctype html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+    {{case.case_text}}
+{% endblock %}
+

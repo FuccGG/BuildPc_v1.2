@@ -1,0 +1,190 @@
+<!doctype html>
+{% load static %}
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Page</title>
+<meta name="generator" content="WYSIWYG Web Builder 15 Trial Version - http://www.wysiwygwebbuilder.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="Untitled2.css" rel="stylesheet">
+<link href="{% static 'css/2page.css'%}" rel="stylesheet">
+</head>
+<body>
+<div id="container">
+<div id="wb_Image1">
+<img src="{% static 'image/BackgroundMain.png'%}" id="Image1" alt=""></div>
+<div id="wb_Image2">
+<img src="{% static 'image/Ресурс 5.png'%}" id="Image2" alt=""></div>
+<div id="wb_Image3">
+<img src="{% static 'image/Ресурс 10.png'%}" id="Image3" alt=""></div>
+<div id="wb_Image4">
+<img src="{% static 'image/Ресурс 18.png'%}" id="Image4" alt=""></div>
+<div id="wb_Image5">
+<img src="{% static 'image/Ресурс 17.png'%}" id="Image5" alt=""></div>
+<div id="wb_Image6">
+<img src="{% static 'image/Ресурс 16.png'%}" id="Image6" alt=""></div>
+<div id="wb_Image7">
+<img src="{% static 'image/Ресурс 15.png'%}" id="Image7" alt=""></div>
+<div id="wb_Image8">
+<img src="{% static 'image/Ресурс 14.png'%}" id="Image8" alt=""></div>
+<div id="wb_Image9">
+<img src="{% static 'image/Ресурс 12.png'%}" id="Image9" alt=""></div>
+<div id="wb_Text1">
+<span style="color:#FFFF00;font-family:Arial;font-size:13px;">{{case.case_text}}</span></div>
+<a id="Button1" href="">Начать сначала</a>
+<a id="Button2" href="">Помощь</a>
+<a id="Button3" href="../">Вернуться назад</a>
+<a id="Button4" href="">Подробности</a>
+<div id="wb_Image10">
+<img src="{% static 'image/Ресурс 11.png'%}" id="Image10" alt=""></div>
+<a id="Button5" href="/../component_parts/case_result"></a>
+<select name="Processor" size="1" id="Combobox1">
+    {% if case.cpu == Null%}
+    {% for cpu in all_cpus%}
+    <option value="{{cpu}}">{{ cpu.name }}:
+                        Cores - {{cpu.cores}}
+                        TDP - {{cpu.tdp}}
+                        Price - {{cpu.price}},
+                        Power - {{cpu.power}},
+                        Socket - {{cpu.socket}}
+    </option>
+    {% endfor %}
+    {% else %}
+     <option value={{case.cpu}}>{{ case.cpu.name }}:
+                        Cores - {{case.cpu.cores}}
+                        TDP - {{case.cpu.tdp}}
+                        Price - {{case.cpu.price}},
+                        Power - {{case.cpu.power}},
+                        Socket - {{case.cpu.socket}}
+    {% endif %}
+
+</select>
+<select name="PowerBox" size="1" id="Combobox2">
+{% if case.power_supply == Null%}
+    {% for ps in all_power_supplys %}
+    <option value={{ps}}>{{ ps.name }}:
+                        Price - {{ps.price}},
+                        Power - {{ps.power}},
+    </option>
+    {% endfor %}
+    {% else %}
+     <option value={{case.power_supply}}>{{ case.power_supply.name }}:
+                        Price - {{case.power_supply.price}},
+                        Power - {{case.power_supply.power}}
+    {% endif %}
+</select>
+<select name="Motherboard" size="1" id="Combobox3">
+{% if case.mother_board == Null%}
+    {% for mb in all_mother_boards %}
+    <option value={{mb}}>{{ mb.name }}:
+                        Socket(GC) - {{mb.graphics_card_socket}},
+                        Socket(CPU) - {{mb.cpu_socket}}
+                        Price - {{mb.price}},
+                        Power - {{mb.power}}
+    </option>
+    {% endfor %}
+    {% else %}
+     <option value={{case.mother_board}}>{{ case.mother_board.name }}:
+                        Socket(GC) - {{case.mother_board.graphics_card_socket}},
+                        Socket(CPU) - {{case.mother_board.cpu_socket}}
+                        Price - {{case.mother_board.price}},
+                        Power - {{case.mother_board.power}}
+    {% endif %}
+</select>
+<select name="Videocard" size="1" id="Combobox4">
+{% if case.video_card == Null%}
+    {% for gc in all_video_cards %}
+    <option value={{gc}}>{{ gc.name }}:
+                        Price - {{gc.price}},
+                        Power - {{gc.power}},
+                        Socket - {{gc.socket}}
+    </option>
+    {% endfor %}
+    {% else %}
+     <option value={{case.video_card}}>{{ case.video_card.name }}:
+                        Price - {{case.video_card.price}},
+                        Power - {{case.video_card.power}},
+                        Socket - {{case.video_card.socket}}
+    {% endif %}
+</select>
+<select name="Memory" size="1" id="Combobox5">
+{% if case.ram == Null%}
+    {% for ram in all_rams %}
+    <option value={{ram}}>{{ ram.name }}:
+                        Memory - {{ram.amount_of_memory}},
+                        Memory Type - {{ram.memory_type}},
+                        Price - {{ram.price}},
+                        Power - {{ram.power}},
+    </option>
+    {% endfor %}
+    {% else %}
+     <option value={{case.ram}}>{{ case.ram.name }}:
+                        Memory - {{case.ram.amount_of_memory}},
+                        Memory Type - {{case.ram.memory_type}},
+                        Price - {{case.ram.price}},
+                        Power - {{case.ram.power}}
+    {% endif %}
+</select>
+<select name="Hard" size="1" id="Combobox6">
+{% if case.hdd == Null%}
+    {% for hdd in all_hdds %}
+    <option value={{hdd}}>{{ hdd.name }}:
+                        Memory - {{hdd.amount_of_memory}},
+                        Price - {{hdd.price}},
+                        Power - {{hdd.power}},
+                        Cache Size - {{hdd.cache_size}}
+    </option>
+    {% endfor %}
+    {% else %}
+     <option value={{case.hdd}}>{{ case.hdd.name }}:
+                        Memory - {{case.hdd}},
+                        Price - {{case.hdd.price}},
+                        Power - {{case.hdd.power}},
+                        Cache Size - {{case.hdd.cache_size}}
+    {% endif %}
+</select>
+<select name="Cooler" size="1" id="Combobox7">
+{% if case.video_card == Null%}
+    {% for c in all_coolings %}
+    <option value={{c}}>{{ c.name }}:
+                        Dissipated TDP - {{c.dissipated_tdp}},
+                        Price - {{c.price}},
+                        Power - {{c.power}},
+                        Socket - {{c.supported_socket}}
+    </option>
+    {% endfor %}
+    {% else %}
+     <option value={{case.cooling}}>{{ case.cooling.name }}:
+                        Dissipated TDP - {{case.cooling.dissipated_tdp}},
+                        Price - {{case.cooling.price}},
+                        Power - {{case.cooling.power}},
+                        Socket - {{case.cooling.supported_socket}}
+    {% endif %}
+
+</select>
+<select name="Box" size="1" id="Combobox8">
+{% if case.ssd == Null%}
+    {% for ssd in all_ssds %}
+    <option value={{ssd}}>{{ ssd.name }}:
+                        Memory - {{ssd.amount_of_memory}},
+                        Price - {{ssd.price}},
+                        Power - {{ssd.power}},
+                        Interface - {{ssd.interface}}
+    </option>
+    {% endfor %}
+    {% else %}
+     <option value={{case.ssd}}>{{ case.ssd.name }}:
+                        Memory - {{case.ssd}},
+                        Price - {{case.ssd.price}},
+                        Power - {{case.ssd.power}},
+                        Interface - {{case.ssd.interface}}
+    {% endif %}
+
+</select>
+<div id="wb_Image11">
+<img src="{% static 'image/Ресурс 4.png'%}" id="Image11" alt=""></div>
+<div id="wb_Image12">
+<img src="{% static 'image/Ресурс 3.png'%}" id="Image12" alt=""></div>
+</div>
+</body>
+</html>

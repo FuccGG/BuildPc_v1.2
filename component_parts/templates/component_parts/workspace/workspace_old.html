@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
+</head>
+
+<body style="	background-image: url({% static 'image/workspace_background.jpg' %});	background-position: middle;	background-size: 100%;	background-repeat: repeat;">
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2" style=""></div>
+        <div class="col-md-2 mx-2 mb-3" style=""><a class="btn w-100 mx-4 btn-secondary" href="#">Начать сначала</a></div>
+        <div class="col-md-2 mx-2 mb-3" style=""><a class="btn mx-4 w-100 btn-secondary" href="#">Помощь</a></div>
+        <div class="col-md-2 mx-2" style=""><a class="btn mx-4 w-100 btn-secondary" href="../">Вернуться назад</a></div>
+        <div class="col-md-2 mx-2" style=""><a class="btn mx-4 w-100 btn-secondary" href="#">Подробности</a></div>
+      </div>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-3 mt-2"></div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-2">
+          <div class="btn-group">
+
+            <button class="btn dropdown-toggle btn-secondary" data-toggle="dropdown"> Процессор</button>
+
+            <div class="dropdown-menu">
+                {% if all_cases.cpu == Null %}
+                  {% for cpu in all_cpus%}
+                      <a class="dropdown-item" href="#">
+                        {{ cpu.name }}:
+                        Price - {{cpu.price}},
+                        Power - {{cpu.power}},
+                        Socket - {{cpu.socket}}
+                      </a>
+
+                      <div class="dropdown-divider"></div>
+                   {% endfor %}
+                {% else %}
+                  <a class="dropdown-item" href="#">
+                    {{ all_cases.cpu.name }}:
+                    Price - {{all_cases.cpu.price}},
+                    Power - {{all_cases.cpu.power}},
+                    Socket - {{all_cases.cpu.socket}}
+                  </a>
+                {% endif %}
+            </div>
+
+          </div>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2">
+          <div class="btn-group">
+            <button class="btn dropdown-toggle btn-secondary" data-toggle="dropdown"> Материнская плата</button>
+            <div class="dropdown-menu">
+              {% if all_cases.mother_board == Null %}
+                  {% for mother_board in all_mother_boards%}
+                      <a class="dropdown-item" href="#">
+                        {{ mother_board.name }}:
+                        Price - {{mother_board.price}},
+                        Power - {{mother_board.power}},
+                        Socket(GC) - {{mother_board.graphics_card_socket}},
+                        Socket(CPU) - {{mother_board.cpu_socket}}
+                      </a>
+
+                      <div class="dropdown-divider"></div>
+                   {% endfor %}
+                {% else %}
+                  <a class="dropdown-item" href="#">
+                    {{ all_cases.mother_board.name }}:
+                    Price - {{all_cases.mother_board.price}},
+                    Power - {{all_cases.mother_board.power}},
+                    Socket(GC) - {{all_cases.mother_board.graphics_card_socket}},
+                    Socket(CPU) - {{all_cases.mother_board.cpu_socket}}
+                  </a>
+                {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2">
+          <div class="btn-group">
+            <button class="btn dropdown-toggle btn-secondary" data-toggle="dropdown"> Оперативная память</button>
+            <div class="dropdown-menu">
+              {% if all_cases.ram == Null %}
+                {% for ram in all_rams%}
+                    <a class="dropdown-item" href="#">
+                      {{ram.name}}:
+                      Price - {{ram.price}},
+                      Power - {{ram.power}}
+                    </a>
+                    <div class="dropdown-divider"></div>
+                {% endfor %}
+              {%else%}
+              <a class="dropdown-item" href="#">
+                {{all_cases.ram.name}}:
+                Price - {{all_cases.ram.price}},
+                Power - {{all_cases.ram.power}}
+              </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2 my-5"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-2">
+          <div class="btn-group">
+            <button class="btn dropdown-toggle btn-secondary" data-toggle="dropdown"> Блок питания</button>
+            <div class="dropdown-menu">
+              {% if all_cases.power_supply == Null %}
+                {% for ps in all_power_supplys %}
+                    <a class="dropdown-item" href="#">
+                      {{ps.name}}:
+                      Price - {{ps.price}},
+                      Power - {{ps.power}}
+                    </a>
+                    <div class="dropdown-divider"></div>
+                {% endfor %}
+              {%else%}
+              <a class="dropdown-item" href="#">
+                {{all_cases.power_supply.name}}:
+                Price - {{all_cases.power_supply.price}},
+                Power - {{all_cases.power_supply.power}}
+              </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2">
+          <div class="btn-group">
+            <button class="btn dropdown-toggle btn-secondary" data-toggle="dropdown"> Видеокарта</button>
+            <div class="dropdown-menu">
+              {% if all_cases.video_card == Null %}
+                {% for vid in all_video_cards %}
+                    <a class="dropdown-item" href="#">
+                      {{vid.name}}:
+                      Price - {{vid.price}},
+                      Power - {{vid.power}},
+                      Socket - {{vid.socket}}
+                    </a>
+                    <div class="dropdown-divider"></div>
+                {% endfor %}
+              {%else%}
+              <a class="dropdown-item" href="#">
+                {{all_cases.video_card.name}}:
+                Price - {{all_cases.video_card.price}},
+                Power - {{all_cases.video_card.power}},
+                Socket - {{all_cases.video_card.socket}}
+              </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2">
+          <div class="btn-group">
+            <button class="btn dropdown-toggle btn-secondary" data-toggle="dropdown"> Жёсткий диск</button>
+            <div class="dropdown-menu">
+              {% if all_cases.hdd == Null %}
+                {% for hdd in all_hdds%}
+                    <a class="dropdown-item" href="#">
+                      {{hdd.name}}:
+                      Price - {{hdd.price}},
+                      Power - {{hdd.power}}
+                    </a>
+                    <div class="dropdown-divider"></div>
+                {% endfor %}
+              {%else%}
+              <a class="dropdown-item" href="#">
+                {{all_cases.ram.name}}:
+                Price - {{all_cases.ram.price}},
+                Power - {{all_cases.ram.power}}
+              </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2" style=""></div>
+        <div class="col-md-2 mx-2 mb-3" style=""></div>
+        <div class="col-md-2 mx-2 mb-3" style=""></div>
+        <div class="col-md-2 mx-2" style=""></div>
+        <div class="col-md-2 mx-2" style=""></div>
+      </div>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-3 mt-2"></div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"><a class="btn w-100 btn-secondary text-warning" href="#">Проверить</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p class="lead text-light mt-4"> Я Стив &nbsp;</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>
