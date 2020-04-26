@@ -91,7 +91,3 @@ def general_check_logical(player_action_model):
     return result
 
 
-c = Case.objects.all()
-p = PlayerAction.objects.all()
-
-print(power_supply_is_correct(p.get(id=1)))
