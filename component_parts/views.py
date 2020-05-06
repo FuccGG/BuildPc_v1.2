@@ -1,13 +1,8 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse
-
 from component_parts import functions_1
-from django.http import HttpResponse, HttpResponseRedirect
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from . import models
 from .forms import CaseForm
-
-# Create your views here.
 
 
 def index(request):
@@ -34,19 +29,21 @@ def cases(request):
 
 
 def case_result(request):
-    res = functions_1.general_check_details(models.PlayerAction.objects.latest('id'))
+    solution = models.PlayerAction.objects.latest('id')
+    res = functions_1.general_check_details(solution)
+    # solution.delete()
     return render(request, 'component_parts/case_result/case_result.html', {'res': res})
 
 
 def case_form(request):
     case = models.Case.objects.get(id=1)
     if request.method == 'POST':
-        form = CaseForm(request.POST)
+        form = CaseForm({'case_level': case.case_level, 'budget': case.budget}, request.POST)
         form.save()
         return redirect('case_result')
     else:
         form = CaseForm()
-    return render(request, 'component_parts/case_form/case_form.html', {'form': form,'case': case})
+    return render(request, 'component_parts/case_form/case_form.html', {'form': form, 'case': case})
 
 
 def register(request):
@@ -58,3 +55,13 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request, 'component_parts/register/register.html', {'form': form})
+
+
+def login(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            return redirect('index')
+    else:
+        form = AuthenticationForm()
+    return render(request, 'component_parts/login.html', {'form': form})
