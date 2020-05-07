@@ -1,3 +1,5 @@
+from random import randint
+
 from django.shortcuts import render, redirect
 from component_parts import functions_1
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -36,13 +38,16 @@ def case_result(request):
 
 
 def case_form(request):
-    case = models.Case.objects.get(id=1)
+    case = models.Case.objects.get(id=randint(1, models.Case.objects.latest('id').id))
     if request.method == 'POST':
-        form = CaseForm({'case_level': case.case_level, 'budget': case.budget}, request.POST)
+        form = CaseForm(request.POST)
         form.save()
         return redirect('case_result')
     else:
-        form = CaseForm()
+        form = CaseForm({'video_card': case.video_card, 'cpu': case.cpu, 'ram':case.ram, 'hdd': case.hdd,
+                         'ssd': case.ssd, 'mother_board':case.mother_board, 'cooling': case.cooling,
+                         'power_supply': case.power_supply,
+                         'case_level': case.case_level, 'budget': case.budget})
     return render(request, 'component_parts/case_form/case_form.html', {'form': form, 'case': case})
 
 
